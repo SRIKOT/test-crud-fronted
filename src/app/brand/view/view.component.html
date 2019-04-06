@@ -1,0 +1,53 @@
+<button class="example-botton-fixed" mat-fab [routerLink]="['/brand']">
+  <mat-icon>home</mat-icon>
+</button>
+
+<div class="row justify-content-center">
+  <div fxLayout="column" fxLayoutAlign="center end">
+    <button [disabled]="!previos_id" mat-fab class="navigateBtn" (click)="listPerson(id = previos_id)"><i
+        class="fa fa-chevron-left fa-2x" aria-hidden="true"></i>&nbsp;</button>
+  </div>
+  <div class="col-md-5">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <img *ngIf="image" mat-card-avatar class="example-header-image" src="{{url}}uploads/brand/{{id}}/{{image}}" />
+        <img *ngIf="!image" mat-card-avatar class="example-header-image" src="assets/image/no_image.png" />
+        <mat-card-title>{{ name }}</mat-card-title>
+        <mat-card-subtitle>{{ nick_name }}</mat-card-subtitle>
+        <div>
+
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/brand/edit', id]">
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="delete(id)">
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+
+        </div>
+      </mat-card-header>
+      <ng-container *ngIf="image">
+        <img mat-card-image src="{{url}}uploads/brand/{{id}}/{{image}}" alt="Photo of a Shiba Inu">
+      </ng-container>
+      <ng-container *ngIf="!image">
+        <img mat-card-image src="assets/image/no_image.png" alt="Photo of a Shiba Inu">
+      </ng-container>
+      <mat-card-content>
+        <p> <b>Age:</b> {{ age }} </p>
+        <p> <b>Skill:</b> {{ skill }} </p>
+        <p> <b>Line Id:</b> {{ line }} </p>
+        <p> <b>Tel:</b> {{ tel }} </p>
+        <p> <b>Detail:</b> {{ detail }} </p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center start">
+    <button [disabled]="!next_id" mat-fab class="navigateBtn" (click)="listPerson(id = next_id)">&nbsp;<i
+        class="fa fa-chevron-right fa-2x" aria-hidden="true"></i></button>
+  </div>
+</div>

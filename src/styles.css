@@ -1,0 +1,43 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-raised-button,
+.mat-button,
+.mat-raised-button,
+.mat-stroked-button,
+.mat-flat-button,
+.mat-menu-item,
+.mat-icon-button,
+.mat-fab {
+  outline: 0 !important;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-dialog-actions {
+  justify-content: flex-end;
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.button-action {
+  text-align: right;
+}
+
+.button-action button,
+a {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.mat-chip-button {
+  cursor: pointer;
+}

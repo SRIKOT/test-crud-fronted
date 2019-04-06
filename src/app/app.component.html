@@ -1,0 +1,26 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-button class="example-app-name font-weight-bold" [routerLink]="brand"><img
+        src="assets/image/material.png" width="40" />
+      Music Brand</button>
+    <span class="example-spacer"></span>
+
+  </mat-toolbar>
+  <mat-progress-bar *ngIf="loading" color="accent" mode="indeterminate">
+  </mat-progress-bar>
+
+  <button class="example-botton-fixed" mat-fab color="primary" [routerLink]="brand_create"><i class="fa fa-plus fa-2x"
+      aria-hidden="true"></i></button>
+
+  <div class="container-fluid height-body">
+    <div class="row">
+      <div class="col-md-12 text-right">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

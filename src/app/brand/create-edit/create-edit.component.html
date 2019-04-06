@@ -1,0 +1,71 @@
+<button class="example-botton-fixed" mat-fab [routerLink]="['/brand']">
+  <mat-icon>home</mat-icon>
+</button>
+
+<div class="row justify-content-center">
+  <div class="col-md-5" [formGroup]="form" novalidate>
+    <mat-card>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h3><i class="fa fa-user-circle" aria-hidden="true"></i> {{form.get('titleAddEdit').value}}</h3>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10">
+          <input type="file" (change)="onImageChange($event)" accept="image/*">
+          <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
+
+          <ng-container *ngIf="!imagePreview && id">
+            <img *ngIf="form.get('image').value" src="{{url}}uploads/brand/{{id}}/{{form.get('image').value}}"
+              class="imageShow">
+            <img *ngIf="!form.get('image').value" src="assets/image/no_image.png" alt="Photo of a Shiba Inu"
+              class="imageShow">
+          </ng-container>
+
+
+          <mat-form-field>
+            <input matInput placeholder="Name" type="text" formControlName="name">
+            <mat-error>
+              {{validatorName.name}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Nickname" type="text" formControlName="nick_name">
+            <mat-error>
+              {{validatorName.nick_name}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Age" type="number" formControlName="age">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Skill</mat-label>
+            <mat-select multiple formControlName="skill">
+              <mat-option *ngFor="let topping of skillArray" [value]="topping">
+                {{topping}}</mat-option>
+            </mat-select>
+            <mat-error>
+              {{validatorName.skill}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Line ID" type="text" formControlName="line">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Tel." type="text" formControlName="tel">
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput placeholder="Detail" formControlName="detail" matTextareaAutosize matAutosizeMinRows=1
+              matAutosizeMaxRows=5></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-md-10 text-right">
+          <button mat-raised-button (click)="save(form)" color="primary">Submit</button>&nbsp;
+          <button *ngIf="id" mat-raised-button (click)="cancel(id)" color="warn">Cancel</button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

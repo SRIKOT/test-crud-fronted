@@ -1,0 +1,82 @@
+<!-- <div class="row"> -->
+<div fxLayout="row" fxLayoutAlign="space-evenly" *ngFor="let person of persons">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <img *ngIf="person.image" mat-card-avatar class="example-header-image"
+        src="{{url}}uploads/brand/{{person.id}}/{{person.image}}" />
+      <img *ngIf="!person.image" mat-card-avatar class="example-header-image" src="assets/image/no_image.png" />
+      <mat-card-title>{{person.name}}</mat-card-title>
+      <mat-card-subtitle>{{person.nick_name}}</mat-card-subtitle>
+      <div>
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [routerLink]="['/brand/edit', person.id]">
+            <span>Edit</span>
+          </button>
+          <button mat-menu-item (click)="delete(person.id)">
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+
+      </div>
+    </mat-card-header>
+    <ng-container *ngIf="person.image">
+      <img class="img-max" mat-card-image src="{{url}}uploads/brand/{{person.id}}/{{person.image}}"
+        alt="Photo of a Shiba Inu">
+    </ng-container>
+    <ng-container *ngIf="!person.image">
+      <img class="img-max" mat-card-image src="assets/image/no_image.png" alt="Photo of a Shiba Inu">
+    </ng-container>
+    <mat-card-content>
+      <p> <b>Age:</b> {{ person.age }} </p>
+      <p> <b>Skill:</b> {{ person.skill }} </p>
+    </mat-card-content>
+    <mat-card-actions class="text-right">
+      <button mat-raised-button [routerLink]="['/brand/view', person.id]">View</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<!-- <div class="col-md-3" *ngFor="let person of persons"> -->
+<!-- <mat-card class="example-card">
+      <mat-card-header>
+        <img *ngIf="person.image" mat-card-avatar class="example-header-image"
+          src="{{url}}uploads/brand/{{person.id}}/{{person.image}}" />
+        <img *ngIf="!person.image" mat-card-avatar class="example-header-image" src="assets/image/no_image.png" />
+        <mat-card-title>{{person.name}}</mat-card-title>
+        <mat-card-subtitle>{{person.nick_name}}</mat-card-subtitle>
+        <div>
+
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/brand/edit', person.id]">
+              <span>Edit</span>
+            </button>
+            <button mat-menu-item (click)="delete(person.id)">
+              <span>Delete</span>
+            </button>
+          </mat-menu>
+
+        </div>
+      </mat-card-header>
+      <ng-container *ngIf="person.image">
+        <img class="img-max" mat-card-image src="{{url}}uploads/brand/{{person.id}}/{{person.image}}"
+          alt="Photo of a Shiba Inu">
+      </ng-container>
+      <ng-container *ngIf="!person.image">
+        <img class="img-max" mat-card-image src="assets/image/no_image.png" alt="Photo of a Shiba Inu">
+      </ng-container>
+      <mat-card-content>
+        <p> <b>Age:</b> {{ person.age }} </p>
+        <p> <b>Skill:</b> {{ person.skill }} </p>
+      </mat-card-content>
+      <mat-card-actions class="text-right">
+        <button mat-raised-button [routerLink]="['/brand/view', person.id]">View</button>
+      </mat-card-actions>
+    </mat-card> -->
+<!-- </div> -->
+<!-- </div> -->
